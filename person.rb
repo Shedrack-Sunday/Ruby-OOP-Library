@@ -5,7 +5,7 @@ require './book'
 require './rental'
 
 class Person < Nameable
-  attr_reader :id, :rentals
+  attr_reader :id
   attr_accessor :name, :age, :rentals
 
   def initialize(age, name = 'Unknown', parent_permission: true)
