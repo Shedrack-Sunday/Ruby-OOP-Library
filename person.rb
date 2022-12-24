@@ -10,20 +10,20 @@ class Person < Nameable
 
   def initialize(age, name = 'Unknown', parent_permission: true)
     super()
-    @id = Math.floor(Math.random * 10)
+    @id = rand(1..500)
     @name = name
     @age = age
     @parent_permission = parent_permission
     @rentals = []
   end
 
-  def of_age?
-    @age >= 18
-  end
-
   def add_rental(book)
     @rentals.push(book)
     rentals.person = self
+  end
+
+  def of_age?
+    @age >= 18
   end
 
   def can_use_services?
