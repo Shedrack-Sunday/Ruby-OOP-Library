@@ -66,9 +66,7 @@ class App
   end
 
   def list_books
-    @books.each do |book|
-      puts "Title: #{book.title}, Author: #{book.author}"
-    end
+    @books.each { |book| puts "Title: #{book.title}, Author: #{book.author}"}
   end
 
   def create_person

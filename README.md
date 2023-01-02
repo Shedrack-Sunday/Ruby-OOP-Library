@@ -71,11 +71,19 @@ puts student.play_hooky # prints "¯(ツ)/¯
 ```
 ## 👥 Authors <a name="authors"></a>
 
+## Shedrack Sunday
 - [Github](https://www.github.com/Shedrack-Sunday)
 
 - [Linkedin](https://www.linkedin.com/in/Shedrack-Sunday)
 
 - [Twitter](https://www.twitter.com/DeleSundayS)
+
+## Akpuru Solomon Barine
+ - [Github](https://www.github.com/Solobarine)
+
+ - [Linkedin](https://www.linkedin.com/solomon-akpuru)
+
+ - [Twitter](https://twitter.com/solomonakpuru)
 
 ## 🔭 Future Features <a name="future-features"></a>
 
