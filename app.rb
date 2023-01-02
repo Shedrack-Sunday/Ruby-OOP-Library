@@ -62,9 +62,7 @@ class App
   end
 
   def list_people
-    @person.each do |per|
-      puts "[#{per.class}] Name: #{per.name}, ID: #{per.id}, Age: #{per.age}"
-    end
+    @person.each { |per| puts "[#{per.class}] Name: #{per.name}, ID: #{per.id}, Age: #{per.age}"}
   end
 
   def list_books
