@@ -128,3 +128,47 @@ class App
     end
   end
 end
+
+def save_books(libro)
+  library = []
+  libro.each { |book| library.push({"title" => book.title, "author" => book.author}) }
+  File.write("books.json", library.to_json, mode = "a")
+end
+
+def read_books(books)
+  library = File.read("books.json")
+  if library.zero?
+    books = []
+  else
+    hash_books = library.JSON.parse(library)
+    books = hash_books.each { |book| Book.new(book["title"], book["author"]) }
+  end
+end
+
+def save_people(people)
+  persons = []
+  people.each do |person|
+    if person.specialization
+      persons.push({"name" => person.name, "age" => person.age, "specialization" => person.specialization})
+    else
+      persons.push({"name" => person.name, "age" => person.age, "parent_permission" => true})
+    end
+  end
+  File.write("people.json", people.to_json, mode = "a")
+end
+
+def read_people(group)
+  crowd = File.read("people.json")
+  if crowd.zero?
+    group = []
+  else
+    people = crowd.JSON.parse(crowd)
+    group = people.each do |per|
+      if per.has_key?("specialization")
+        Teacher.new(per.name, per.age, per.specialization)
+      else
+        Student.new(per.name, per.age, true)
+      end
+    end
+  end
+end
