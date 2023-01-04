@@ -56,7 +56,7 @@ class App
     save_rentals
   end
 
-def read_persons
+  def read_persons
     return [] unless File.exist?('person.json')
 
     persons_json = JSON.parse(File.read('person.json'))
