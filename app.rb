@@ -3,6 +3,7 @@ require_relative './student'
 require_relative './teacher'
 require_relative './book'
 require_relative './rental'
+require 'json'
 
 CHOICES = {
   1 => :list_books,
@@ -15,6 +16,56 @@ CHOICES = {
 }.freeze
 
 class App
+  def save_persons
+    File.open('person.json', 'w') do |file|
+      persons = @person.each_with_index.map do |person, index|
+        { class: person.class, age: person.age, name: person.name,
+          specialization: (person.specialization if person.instance_of?(Teacher)),
+          parent_permission: person.parent_permission, index: index, id: person.id }
+      end
+      file.write(JSON.generate(persons))
+    end
+  end
+
+  def save_books
+    File.open('books.json', 'w') do |file|
+      books = @books.each_with_index.map do |book, index|
+        {
+          title: book.title, author: book.author, index: index
+        }
+      end
+      file.write(JSON.generate(books))
+    end
+  end
+
+  def save_rentals
+    File.open('rentals.json', 'w') do |file|
+      rentals = @rentals.each_with_index.map do |rental, _index|
+        {
+          date: rental.date, book_index: @books.index(rental.book),
+          person_index: @person.index(rental.person)
+        }
+      end
+      file.write(JSON.generate(rentals))
+    end
+  end
+
+  def save_data
+    save_persons
+    save_books
+    save_rentals
+  end
+
+
+  def read_rentals
+    return [] unless File.exist?('rentals.json')
+
+    rentals_json = JSON.parse(File.read('rentals.json'))
+    rentals_json.map do |rental|
+      Rental.new(rental['date'], @person[rental['person_index']], @books[rental['book_index']])
+    end
+  end
+
   def question
     puts 'Welcome to School library App!'
     puts "Please choose an option by entering a number:
@@ -28,9 +79,9 @@ class App
   end
 
   def initialize
-    @books = []
-    @person = []
-    @rentals = []
+    @books = read_books
+    @person = read_persons
+    @rentals = read_rentals
   end
 
   def select_option
@@ -111,7 +162,7 @@ class App
     person_num = person_num.to_i
 
     print 'Date:'
-    date = gets.chomp
+    date = gets.chomp.to_i
 
     @rentals.push(Rental.new(date, @person[person_num], @books[book_num]))
     puts 'Rental Created successfully'
@@ -119,8 +170,7 @@ class App
 
   def list_rentals
     print 'Id of person:'
-    id_person = gets.chomp
-    id_person = id_person.to_i
+    id_person = gets.chomp.to_i
 
     puts 'Rentals'
     @rentals.each do |rental|
