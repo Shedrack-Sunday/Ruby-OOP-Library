@@ -56,6 +56,28 @@ class App
     save_rentals
   end
 
+def read_persons
+    return [] unless File.exist?('person.json')
+
+    persons_json = JSON.parse(File.read('person.json'))
+    persons_json.map do |person|
+      case person['class']
+      when 'Teacher'
+        Teacher.new(person['age'], person['specialization'], person['name'])
+      when 'Student'
+        Student.new(person['age'], person['name'], parent_permission: person['parent_permission'])
+      end
+    end
+  end
+
+  def read_books
+    return [] unless File.exist?('books.json')
+
+    books_json = JSON.parse(File.read('books.json'))
+    books_json.map do |book|
+      Book.new(book['title'], book['author'])
+    end
+  end
 
   def read_rentals
     return [] unless File.exist?('rentals.json')
