@@ -18,8 +18,8 @@ class Person < Nameable
   end
 
   def add_rental(book)
-    @rentals.push(book)
-    rentals.person = self
+    rental = Rental.new(Date.today, self, book)
+    @rentals.push(rental)
   end
 
   def to_json(*_args)
