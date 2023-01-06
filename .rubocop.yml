@@ -37,9 +37,13 @@ Layout/HashAlignment:
   EnforcedColonStyle: key
 Layout/ExtraSpacing:
   AllowForAlignment: false
+Layout/EndOfLine:
+  Enabled: false
 Layout/MultilineMethodCallIndentation:
   Enabled: true
   EnforcedStyle: indented
+Layout/TrailingEmptyLines:
+  Enabled: false
 Lint/RaiseException:
   Enabled: false
 Lint/StructNewOverride:
