@@ -1,4 +1,4 @@
-require './classroom.rb'
+require './classroom'
 
 describe Classroom do
   describe '#label' do
@@ -14,6 +14,4 @@ describe Classroom do
       expect(classroom.students).to eq([])
     end
   end
-end
-
-      
+end 

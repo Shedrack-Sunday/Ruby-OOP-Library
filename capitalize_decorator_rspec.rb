@@ -1,5 +1,5 @@
-require './decorator.rb'
-require './capitalize_decorator.rb'
+require './decorator'
+require './capitalize_decorator'
 
 describe CapitalizeDecorator do
   describe '#correct_name' do
@@ -11,3 +11,4 @@ describe CapitalizeDecorator do
     end
   end
 end
+

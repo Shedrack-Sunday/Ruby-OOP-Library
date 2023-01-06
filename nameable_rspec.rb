@@ -1,4 +1,4 @@
-require './nameable.rb'
+require './nameable'
 
 describe Nameable do
   describe '#correct_name' do

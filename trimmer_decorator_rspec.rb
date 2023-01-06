@@ -1,5 +1,5 @@
-require './decorator.rb'
-require './trimmer_decorator.rb'
+require './decorator'
+require './trimmer_decorator'
 
 describe TrimmerDecorator do
   describe '#correct_name' do
