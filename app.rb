@@ -56,7 +56,6 @@ class App
     save_rentals
   end
 
-
   def read_rentals
     return [] unless File.exist?('rentals.json')
 
