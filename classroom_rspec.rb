@@ -14,4 +14,4 @@ describe Classroom do
       expect(classroom.students).to eq([])
     end
   end
-end 
+end

@@ -11,4 +11,3 @@ describe CapitalizeDecorator do
     end
   end
 end
-
