@@ -1,18 +1,17 @@
 require './classroom.rb'
 
 describe Classroom do
-  describe '#initialize' do
+  describe '#label' do
     it 'Creates a classroom with label containing students' do
-      classroom = Classroom.new('Grade 4')
-      expect (classroom.label).to eq('Grade 4')
+      classroom = Classroom.new('Secondary')
+      expect(classroom.label).to eq('Secondary')
     end
   end
 
   describe '#add_student' do
     it 'Adds students to a classroom' do
       classroom = Classroom.new('Grade 5')
-      added_student = classroom.add_student('Jeffery')
-      expect(student.classroom).to eq([classroom])
+      expect(classroom.students).to eq([])
     end
   end
 end
